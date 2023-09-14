@@ -1,5 +1,6 @@
 package demo.practice_20230914.controllers;
 
+import demo.practice_20230914.models.DeleteUserRequest;
 import demo.practice_20230914.models.PatchUserNameRequest;
 import demo.practice_20230914.models.PutUserRequest;
 import demo.practice_20230914.models.User;
@@ -46,13 +47,15 @@ public class UserController{
         return users;
     }
 
-    @DeleteMapping("/{email}")
-    public List<User> DeleteUser(@PathVariable String email){
-        users.forEach(user -> {
-            if(user.getEmail().equals(email)){
-                users.remove(user);
+    @DeleteMapping
+    public List<User> DeleteUser(@RequestBody DeleteUserRequest deleteUserRequest){
+        Iterator<User> iterator = users.iterator();
+        while(iterator.hasNext()){
+            User element = iterator.next();
+            if(element.getEmail().equals(deleteUserRequest.getEmail())){
+                iterator.remove();
             }
-        });
+        }
         return users;
     }
 }
