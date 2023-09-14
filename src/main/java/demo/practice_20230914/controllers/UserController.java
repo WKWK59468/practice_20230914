@@ -14,6 +14,7 @@ public class UserController{
 
     @GetMapping
     public List<User> GetUser(){
+        System.out.println("merge test");
         return users;
     }
 
