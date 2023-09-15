@@ -26,7 +26,7 @@ public class UserController{
         return users;
     }
 
-    @PutMapping("/update/{email}")
+    @PutMapping("/{email}")
     public List<User> PutUser(@PathVariable String email, @RequestBody PutUserRequest putUserRequest){
         users.forEach(user -> {
             if(user.getEmail().equals(email)){
@@ -37,7 +37,7 @@ public class UserController{
         return users;
     }
 
-    @PatchMapping("/rename/{email}")
+    @PatchMapping("/{email}")
     public List<User> PatchUserName(@PathVariable String email, @RequestBody PatchUserNameRequest patchUserNameRequest){
         users.forEach(user -> {
             if(user.getEmail().equals(email)){
