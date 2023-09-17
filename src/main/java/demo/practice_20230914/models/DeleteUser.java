@@ -1,6 +1,6 @@
 package demo.practice_20230914.models;
 
-public class DeleteUserRequest {
+public class DeleteUser {
     private String email;
 
     public String getEmail() {

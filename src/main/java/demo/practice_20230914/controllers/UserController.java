@@ -1,61 +1,45 @@
 package demo.practice_20230914.controllers;
 
-import demo.practice_20230914.models.DeleteUserRequest;
-import demo.practice_20230914.models.PatchUserNameRequest;
-import demo.practice_20230914.models.PutUserRequest;
-import demo.practice_20230914.models.User;
+import demo.practice_20230914.models.*;
+import demo.practice_20230914.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.*;
 
 @RestController
 @RequestMapping("/users")
 public class UserController{
-    List<User> users = new ArrayList<User>();
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
 
     @GetMapping
-    public List<User> GetUser(){
-        System.out.println("merge test2");
-        System.out.println("test2");
-        return users;
+    public List<User> getUser(){
+        return userService.getUsers();
     }
 
     @PostMapping
-    public List<User> AddUser(@RequestBody User user){
-        users.add(user);
-        return users;
+    public void CreateUser(@RequestBody CreateUser createUser){
+        userService.createUser(createUser);
     }
 
-    @PutMapping("/{email}")
-    public List<User> PutUser(@PathVariable String email, @RequestBody PutUserRequest putUserRequest){
-        users.forEach(user -> {
-            if(user.getEmail().equals(email)){
-                user.setUserName(putUserRequest.getUserName());
-                user.setJob(putUserRequest.getJob());
-            }
-        });
-        return users;
+    @PutMapping
+    public void PutUser(@RequestBody PutUser putUser){
+        userService.putUser(putUser);
     }
 
-    @PatchMapping("/{email}")
-    public List<User> PatchUserName(@PathVariable String email, @RequestBody PatchUserNameRequest patchUserNameRequest){
-        users.forEach(user -> {
-            if(user.getEmail().equals(email)){
-                user.setUserName(patchUserNameRequest.getUserName());
-            }
-        });
-        return users;
+    @PatchMapping
+    public void PatchUser(@RequestBody PatchUser patchUser){
+        userService.patchUser(patchUser);
     }
 
     @DeleteMapping
-    public List<User> DeleteUser(@RequestBody DeleteUserRequest deleteUserRequest){
-        Iterator<User> iterator = users.iterator();
-        while(iterator.hasNext()){
-            User element = iterator.next();
-            if(element.getEmail().equals(deleteUserRequest.getEmail())){
-                iterator.remove();
-            }
-        }
-        return users;
+    public void DeleteUser(@RequestBody DeleteUser deleteUser){
+        userService.deleteUser(deleteUser);
     }
+
 }
