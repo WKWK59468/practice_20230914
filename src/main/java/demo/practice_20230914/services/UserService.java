@@ -18,6 +18,8 @@ public class UserService{
         this.userDao = userDao;
     }
     public List<User> getUsers() {
+        List<User> users = userDao.getUsers();
+        users.forEach(user -> System.out.println(user.toString()));
         return userDao.getUsers();
     }
 
