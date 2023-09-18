@@ -18,6 +18,9 @@
     <select id="getUsers" resultType="demo.practice_20230914.models.User">
         select * from users;
     </select>
+    <select id="getUserByEmail" parameterType="String" resultType="demo.practice_20230914.models.User">
+        select * from users where email = #{email};
+    </select>
     <insert id="createUser" parameterType="demo.practice_20230914.models.CreateUser">
         <selectKey keyProperty="email" keyColumn="email" resultType="String" order="AFTER">
             select last_insert_id();

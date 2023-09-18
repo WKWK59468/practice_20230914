@@ -9,6 +9,7 @@ import java.util.List;
 public interface IUserDao {
 
     List<User> getUsers();
+    User getUserByEmail(String email);
     void createUser(CreateUser user);
     void putUser(PutUser user);
     void patchUser(PatchUser user);
