@@ -1,7 +1,6 @@
 package demo.practice_20230914.services;
 
-import demo.practice_20230914.dao.IStudentDao;
-import demo.practice_20230914.models.GetStudentsBySubject;
+import demo.practice_20230914.mapper.IStudentDao;
 import demo.practice_20230914.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package demo.practice_20230914.dao;
+package demo.practice_20230914.mapper;
 
 import demo.practice_20230914.models.GetStudentsBySubject;
 import demo.practice_20230914.models.Student;
@@ -9,7 +9,6 @@ import java.util.List;
 
 @Mapper
 public interface IStudentDao {
-    //過濾學生=B2 的資料
     @Select("SELECT * FROM students")
     List<Student> getStudents();
 }
