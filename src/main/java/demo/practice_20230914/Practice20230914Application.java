@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-@MapperScan("demo.practice_20230914.dao")
+@MapperScan("demo.practice_20230914.mapper")
 public class Practice20230914Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Practice20230914Application.class, args);

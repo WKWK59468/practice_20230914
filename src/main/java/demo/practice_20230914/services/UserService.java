@@ -3,14 +3,12 @@ package demo.practice_20230914.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import demo.practice_20230914.dao.IUserDao;
+import demo.practice_20230914.mapper.IUserDao;
 import demo.practice_20230914.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
